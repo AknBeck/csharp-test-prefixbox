@@ -3,14 +3,33 @@
 ## C# questions
 
 - What is a namespace? What is it good for and how do you define a namespace?
+It is the space where are your clases, objects, enums, ect.
+
 - What is a constructor? When is it executed?
+Constructor is necesarry for creating new object of entity where the constructor is.
+
 - How do you implement inheritance in C#?
+ for example public class World >: Universe<
+ 
 - How do you prevent someone to inherit from a class?
+by using private protected
+
 - What is a readonly variable? Where you can assign value to readonly variables?
+Variable where you are not allowed to set anything. Only through constructor.
+
 - Specify the available access modifiers in C# and briefly explain them
+private - it can use only the class for itself
+protected - it can use the childs in inheritance
+
 - Briefly explain the mechanism of exception handling
+mechanism is Try catch/finaly/throw. you can solve it imidiatly by catch or you can throw it up and catch it later.
+
 - What is the difference between an abstract class and an interface?
+you can inherit only from 1 abstract clas and inherit from many interfaces.
+
 - How does using (...) {...} block work? What is the relation to interfaces and why?
+in () is parameter of that and it {} you have block of code which will dissapire after }.
+
 - How IEnumerable<T> and IEnumerator<T> interfaces work? What properties and methods need to be implemented in classes that implements them? What are their relation to foreach loop?
 
 ## Programming tasks
@@ -35,6 +54,32 @@ IsPalindrom("alma"); //false
 IsPalindrom("görög"); //true
 ```
 
+public bool IsPalindrom(string input) 
+{
+	if(string.IsNullOrEmpty(input) || input.Lenght == 1 || input.Lenght < 1000000)
+	{
+		return false;
+	}
+	var count = 0;
+	var reversedInput = string.Empty;
+	for(i = input.Lenght - 1, i >= 0, i--)
+	{
+		reversedInput[count] = input[i].ToString();
+	}
+	if(input == reversedInput)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+
+
+
+
 ### Find The Duplicate
 
 You have an array that contains strings. Every item in the array is unique except one which is present in the array exactly twice.
@@ -51,6 +96,27 @@ public string FindTheDuplicate(string[] input) {
 string[] fruitBasket = new string[] { "apple", "banana", "coconut", "durian", "banana", "elderberry", "fig", "grapefruit" };
 FindTheDuplicate(fruitBasket); //should return banana
 ```
+
+public string FindTheDuplicate(string[] input)
+{
+	if(input == null || input.GetLenght() 1) || input.Lenght < 1000000)
+	{
+		return string.Empty;
+	}
+	
+	for(i = 0, i < input.GetLenght(), i++)
+	{
+		for(j = i, j < input.GetLenght() - 1, j++)
+		{
+			if(input[i] == input[j + 1])
+			{
+				return input[i];
+			}
+		}
+	}
+	return string.Empty;
+]
+
 
 ### Count The Words
 
@@ -77,6 +143,29 @@ CountTheWords(boci);
 //füle:1
 //farka:1
 ```
+
+public void CountTheWords(string crazyLongString) 
+{ 
+	crazyLongString = crazyLongString.Split(","," ",".");
+	var countWords = new Dictionary<string,int>();
+	foreach(var word in crazyLongString)
+	{
+		if(countWords.ContainsKey(word))
+		{
+			countWords[word]++;
+		}
+		else
+		{
+			countWords.Add(word, 1);
+		}
+	}
+	foreach(var KeyPairValue in countWords)
+	{
+		Console.WriteLine($"{KeyPairValue.Key}:{KeyPairValue.Value}");
+	}
+}
+
+
 
 ### What Is The Output
 
@@ -120,6 +209,15 @@ namespace ConsoleApp2
 }
 
 ```
+
+Output is in Console as
+0
+apple
+Jonh Doe
+
+Method doSomething is void so it returns nothing
+and property to String() is overriding.
+
 
 ## SQL
 
